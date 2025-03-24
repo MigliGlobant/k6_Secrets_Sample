@@ -1,0 +1,43 @@
+name: K6 Performance Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'  # o la versión que necesites
+
+    - name: Install K6
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y k6
+
+    - name: Load Environment Variables
+      run: |
+        echo "API_URL=${{ secrets.API_URL }}" >> $GITHUB_ENV
+        echo "CLIENT_ID=${{ secrets.CLIENT_ID }}" >> $GITHUB_ENV
+        echo "CLIENT_SECRET=${{ secrets.CLIENT_SECRET }}" >> $GITHUB_ENV
+        echo "SCOPE=${{ secrets.SCOPE }}" >> $GITHUB_ENV
+      env:
+        API_URL: ${{ secrets.API_URL }}
+        CLIENT_ID: ${{ secrets.CLIENT_ID }}
+        CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+        SCOPE: ${{ secrets.SCOPE }}
+
+    - name: Run K6 Tests
+      run: |
+        k6 run ../../script.js
