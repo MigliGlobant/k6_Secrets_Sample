@@ -10,6 +10,7 @@ on:
 
 jobs:
   test:
+    environment: Dev
     runs-on: ubuntu-latest
 
     steps:
@@ -39,6 +40,7 @@ jobs:
         echo "CLIENT_ID=${{ secrets.CLIENT_ID }}" >> $GITHUB_ENV
         echo "CLIENT_SECRET=${{ secrets.CLIENT_SECRET }}" >> $GITHUB_ENV
         echo "SCOPE=${{ secrets.SCOPE }}" >> $GITHUB_ENV
+      
       env:
         API_URL: ${{ secrets.API_URL }}
         CLIENT_ID: ${{ secrets.CLIENT_ID }}
