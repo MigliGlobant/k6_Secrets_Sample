@@ -25,7 +25,7 @@ jobs:
       run: |
           # Especifica la versión que deseas instalar
           K6_VERSION="0.57.0"  # Cambia esto a la última versión si es necesario
-          curl -sLo k6.tar.gz https://github.com/grafana/k6/releases/download/v$K6_VERSION/k6-linux-amd64.tar.gz
+          curl -sLo k6.tar.gz https://github.com/grafana/k6/releases/download/v$0.57.0/k6-linux-amd64.tar.gz
           tar -C /usr/local/bin -xzf k6.tar.gz
           rm k6.tar.gz
 
