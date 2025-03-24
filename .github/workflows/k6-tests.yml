@@ -47,4 +47,4 @@ jobs:
 
     - name: Run K6 Tests
       run: |
-        k6 run ../../script.js
+        k6 run script.js
