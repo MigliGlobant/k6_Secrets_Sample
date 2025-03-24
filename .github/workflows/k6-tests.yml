@@ -28,7 +28,11 @@ jobs:
           curl -sLo k6.tar.gz https://github.com/grafana/k6/releases/download/v0.57.0/k6-v0.57.0-linux-arm64.tar.gz
           tar -C /usr/local/bin -xzf k6.tar.gz
           rm k6.tar.gz
-
+  
+    - name: Verify K6 Installation
+      run: |
+        k6 version  # Verifica que k6 se haya instalado correctamente
+        
     - name: Load Environment Variables
       run: |
         echo "API_URL=${{ secrets.API_URL }}" >> $GITHUB_ENV
