@@ -23,8 +23,9 @@ jobs:
 
     - name: Install K6
       run: |
-        sudo apt-get update
-        sudo apt-get install -y k6
+          curl -sLo k6.tar.gz https://github.com/grafana/k6/releases/latest/download/k6-linux-amd64.tar.gz
+          tar -C /usr/local/bin -xzf k6.tar.gz
+          rm k6.tar.gz
 
     - name: Load Environment Variables
       run: |
