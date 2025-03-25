@@ -8,6 +8,13 @@ const client_secret =__ENV.CLIENT_SECRET || '1234'; // clientSecret por defecto
 const scope = __ENV.SCOPE ||'';
 
 
+export let options = {
+    thresholds: {
+        "http_req_duration": ["p(95)<200"],
+        "http_req_duration{staticAsset:yes}": ["p(95)<50"]
+    }
+};
+ 
 export default function () {
     
   const payload = `grant_type=client_credentials&scope=${scope}&client_id=${client_id}&client_secret=${client_secret}`;
