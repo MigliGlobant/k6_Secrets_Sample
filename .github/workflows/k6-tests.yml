@@ -41,6 +41,7 @@ jobs:
       with:
         path: k6_script.js
         summary: true
+        debug: true
           
     - name: Upload test artifacts
       uses: actions/upload-artifact@v4
