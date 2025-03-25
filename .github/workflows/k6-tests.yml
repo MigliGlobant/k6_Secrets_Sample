@@ -48,4 +48,7 @@ jobs:
       id: run-tests
       run: |
         k6 run --out json=results.json k6_script.js
-
+    - name: Upload test artifacts
+      uses: actions/upload-artifact@v4
+      with: 
+        path: results.json
