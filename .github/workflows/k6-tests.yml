@@ -41,7 +41,10 @@ jobs:
       with:
         path: k6_script.js
         summary: true
-        debug: true
+    - name: Save K6 Test Results
+      run: |
+          mkdir -p results
+          k6 run --out json=results/results.json k6_script.js   
           
     - name: Upload test artifacts
       uses: actions/upload-artifact@v4
